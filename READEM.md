@@ -2,6 +2,13 @@
 
 
 ```
+[root@machine /home]# ./rw_reg 
+./rw_reg [read/write] [physical address] [range/offset] <value(for write)>
+[root@machine /home]# 
+```
+
+
+```
 [root@machine /home]# ./rw_reg read 0xc0010c00 0x1c
 PAGE_SIZE_MASK:0x00000fff
 reg base addr:0xc0010c00, range:0x0000001c
@@ -20,26 +27,21 @@ reg:0xc0010c1c, val:0xffffffff
 
 
 ```
-[root@machine /home]# ./rw_reg write 0xc0010000 0xc00 0x0
+[root@machine /home]# hwclock 
+Thu Jan  1 00:00:08 1970  0.000000 seconds
+[root@machine /home]# 
+[root@machine /home]# 
+[root@machine /home]# 
+[root@machine /home]# ./rw_reg write 0xc0010000 0xc00 0x01
 PAGE_SIZE_MASK:0x00000fff
-reg base addr:0xc0010000, offset:0x00000c00, value:0x00000000
+reg base addr:0xc0010000, offset:0x00000c00, value:0x00000001
 mmap() base addr:0xc0010000, range:0x00000c00
-set addr:0xc0010c00 val:0x00000000
+get addr:0xc0010c00 val:0x00000000
+set addr:0xc0010c00 val:0x00000001
 get addr:0xc0010c00 val:0x00000000
 [root@machine /home]# 
 [root@machine /home]# hwclock 
-Thu Jan  1 00:00:05 1970  0.000000 seconds
+Thu Jan  1 00:00:03 1970  0.000000 seconds
 [root@machine /home]# 
 [root@machine /home]# 
-[root@machine /home]# ./rw_reg write 0xc0010c00 0x00 0x0
-PAGE_SIZE_MASK:0x00000fff
-reg base addr:0xc0010c00, offset:0x00000000, value:0x00000000
-mmap() base addr:0xc0010000, range:0x00000c00
-set addr:0xc0010c00 val:0x00000000
-get addr:0xc0010c00 val:0x00000000
-[root@machine /home]# 
-[root@machine /home]# hwclock 
-Thu Jan  1 00:00:07 1970  0.000000 seconds
-[root@machine /home]#
 ```
-
